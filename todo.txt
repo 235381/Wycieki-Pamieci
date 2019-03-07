@@ -1,2 +1,4 @@
 Spotkanie 18.03
 Zrobić research, przygotować i opisać wybrane źródła
+4-5 języków, wstęp teoretyczny - to na 18.03
+address sanitizer, Valgrind -> jak działają, co dają + przykłady wycieków, rodzaje itd - na następny raz
