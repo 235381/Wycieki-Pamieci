@@ -4,3 +4,9 @@ Przykłady w postaci prostych programów, analiza użycia pamięci, porównanie 
 Działanie Garbage Collectora - ukazanie słabych stron, zalet i wad względem ręcznego zzarządzania pamięcią
 Metody i techniki zapobiegania wyciekom pamięci
 Wnioski na podstawie powyższych informacji i testów
+
+Do tej grupy sugeruję dorzucić język Rust, bo w kontekście zarządzania pamięcią jest dosyć unikalną nowością.
+Będzie potrzebne zaproponowanie metody pomiarowej (mierzenie zużycia pamięci nie jest takie proste). 
+Sugeruję pracę na Linuksie.
+Wydaje mi się, że ciekawym aspektem pracy może być analiza problemu (wycieków, użycia GC) pod kątem zastosowań tj. 
+jej dopuszczalności i zagrożeń. Przykładowe hasła: safety-critical systems, RTOS, MISRA C.
