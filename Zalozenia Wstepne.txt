@@ -1,0 +1,6 @@
+Wycieki pamięci - wstęp, przedstawienie zjawiska, informacje teoretyczne
+Analiza wycieków w popularnych językach programowania - C++/C, C#, Java, Python(?)
+Przykłady w postaci prostych programów, analiza użycia pamięci, porównanie wyników dla programów zwalniających i niezwalniających pamięci
+Działanie Garbage Collectora - ukazanie słabych stron, zalet i wad względem ręcznego zzarządzania pamięcią
+Metody i techniki zapobiegania wyciekom pamięci
+Wnioski na podstawie powyższych informacji i testów
