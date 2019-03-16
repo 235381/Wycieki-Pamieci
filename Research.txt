@@ -1,0 +1,100 @@
+---------------------------------------------------------------Ogólnie o wyciekach:
+
+https://en.wikipedia.org/wiki/Memory_leak
+https://pl.wikipedia.org/wiki/Wyciek_pami%C4%99ci
+	Ogólnie o wyciekach, przyczynach, konsekwencjach.
+	
+https://docs.microsoft.com/pl-pl/previous-versions/dn312109(v=msdn.10)
+	Częste błędy powodujące wycieki pamięci
+	
+https://docs.microsoft.com/pl-pl/previous-versions/dn168863(v=msdn.10)
+	O zarządzaniu pamięcią
+	
+	
+	
+---------------------------------------------------------------Rust:
+	
+https://doc.rust-lang.org/book/foreword.html
+https://doc.rust-lang.org/nomicon/README.html
+	dokumentacja Rust
+	
+https://devenv.pl/rust-ownership-po-co-nam-ta-wlasnosc/
+	Rust Ownership - wprowadzenie
+	
+http://huonw.github.io/blog/2016/04/memory-leaks-are-memory-safe/
+	Możliwości wycieków, memory safe vs memory leak
+	
+https://dev.to/rabingaire/memory-management--rust-mja
+	Zarządzanie pamięcią
+
+	
+	
+---------------------------------------------------------------Java:
+
+https://www.toptal.com/java/hunting-memory-leaks-in-java
+	Scegółowo o wyciekach w Javie, czym są, jak wykrywać i zapobiegać. Opis Garbage Collectora, jak używać VisualVM
+	
+http://geekexplains.blogspot.com/2009/11/memory-leak-in-java-does-static-cause.html
+	Opis wycieków spowodowanych przez 'static' 
+	
+https://stackoverflow.com/questions/6470651/creating-a-memory-leak-with-java
+	Spora dyskusja o uzyskaniu wycieków w Javie
+
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html
+	Dokumentacja Garbage Colletora
+	
+https://stackify.com/memory-leaks-java/
+	Analiza i przykłady wycieków w Javie, metody zapobiegania
+
+https://www.baeldung.com/java-memory-leaks
+	Przyczyny i rozpoznawanie wycieków
+	
+http://michalpolak.com.pl/wycieki-pamieci-jak-ich-szukac/
+	Jak szukać błędów z VisualVM
+
+
+
+---------------------------------------------------------------C/C++:
+
+https://kacperkolodziej.pl/programowanie/zwalczanie-wyciekow-bledow-pamieci-cpp11.html
+	C++ Wycieki - różne przykłądy, zapobieganie
+
+https://4programmers.net/C/Wyciek_pami%C4%99ci
+	Przykłady wycieków i śledzenia w C
+	
+https://docs.microsoft.com/pl-pl/windows/desktop/Win7AppQual/preventing-memory-leaks-in-windows-applications
+	Jak zapobiegać wyciekom w aplikacjach Windows
+	
+https://www.ibm.com/developerworks/aix/library/au-toughgame/index.html
+	Pointers and memory leaks in C
+	
+https://barrgroup.com/Embedded-Systems/How-To/Detecting-Memory-Leaks-C
+	Zarządzanie pamięcią i wykrywanie wycieków
+
+https://blog.nelhage.com/post/three-kinds-of-leaks/
+	Przykłady wycieków i rozwiązania
+	
+http://students.mimuw.edu.pl/SO/Projekt05-06/temat3-g3/pamiec.html
+	Przykładowe narzędzia do wykrywania wycieków oraz testy
+	
+	
+
+---------------------------------------------------------------Python:
+	
+https://polydev.pl/2018/04/02/czy-w-pythonie-moze-wyciekac-pamiec/
+	Analiza możliwości wycieków pamięci w Pythonie
+	
+https://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++-wrapping.html
+	Wrapping C/C++ for Python
+	
+http://book.pythontips.com/en/latest/python_c_extension.html
+	interfacing C code to Python
+	
+https://mflerackers.wordpress.com/2012/04/12/fixing-and-avoiding-memory-leaks-in-python/
+	Unikanie wycieków
+	
+https://chase-seibert.github.io/blog/2013/08/03/diagnosing-memory-leaks-python.html
+	Diagnozowanie wycieków
+	
+	
+	
