@@ -10,6 +10,15 @@ https://docs.microsoft.com/pl-pl/previous-versions/dn312109(v=msdn.10)
 https://docs.microsoft.com/pl-pl/previous-versions/dn168863(v=msdn.10)
 	O zarządzaniu pamięcią
 	
+https://github.com/google/sanitizers/wiki/AddressSanitizer?fbclid=IwAR1Hreev9-UH25-ZfX6wrdjxo0xz_LveH44_0TmTAhZBKrZfaBz23y-5z-Q
+	Git Address Sanitizera
+
+http://valgrind.org/docs/manual/quick-start.html
+	Dokumentacja Valgrind
+	
+http://students.mimuw.edu.pl/SO/Projekt05-06/temat3-g3/pamiec.html
+	Przykładowe narzędzia do wykrywania wycieków oraz testy
+	
 	
 	
 ---------------------------------------------------------------Rust:
@@ -74,11 +83,8 @@ https://barrgroup.com/Embedded-Systems/How-To/Detecting-Memory-Leaks-C
 https://blog.nelhage.com/post/three-kinds-of-leaks/
 	Przykłady wycieków i rozwiązania
 	
-http://students.mimuw.edu.pl/SO/Projekt05-06/temat3-g3/pamiec.html
-	Przykładowe narzędzia do wykrywania wycieków oraz testy
 	
 	
-
 ---------------------------------------------------------------Python:
 	
 https://polydev.pl/2018/04/02/czy-w-pythonie-moze-wyciekac-pamiec/
