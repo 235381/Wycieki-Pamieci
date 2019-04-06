@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/CppTablica.dir/main.cpp.o  -o CppTablica 
