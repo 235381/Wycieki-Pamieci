@@ -1,4 +1,4 @@
-# Install script for directory: /home/dsk/Desktop/OiAK-Proj/CppTablica
+# Install script for directory: /home/dsk/Desktop/OiAK-Proj/Wycieki-Pamieci/Cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/dsk/Desktop/OiAK-Proj/CppTablica/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/dsk/Desktop/OiAK-Proj/Wycieki-Pamieci/Cpp/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

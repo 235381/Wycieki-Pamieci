@@ -1,4 +1,4 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/dsk/Desktop/OiAK-Proj/CppTablica
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/dsk/Desktop/OiAK-Proj/Wycieki-Pamieci/Cpp
 -- The C compiler identification is GNU 7.3.0
 -- The CXX compiler identification is GNU 7.3.0
 -- Check for working C compiler: /usr/bin/cc
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/dsk/Desktop/OiAK-Proj/CppTablica/cmake-build-debug
+-- Build files have been written to: /home/dsk/Desktop/OiAK-Proj/Wycieki-Pamieci/Cpp/cmake-build-debug

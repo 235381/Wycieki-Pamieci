@@ -19,7 +19,14 @@ problematicClass::~problematicClass() {
 
 int main(){
     problematicClass *c1 = new problematicClass();
-    delete c1;
+//    delete c1;
+
+//    std::cout<< 1 << std::endl;
+
+//    int b = 1;
+//    int k = 2;
+//    int result = b + k;
+
     return 0;
 }
 

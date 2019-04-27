@@ -1,0 +1,8 @@
+rustc memleak.rs -A warnings
+./memleak
+
+
+valgrind --leak-check=full ./memleak
+
+
+
