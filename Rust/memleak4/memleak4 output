@@ -1,0 +1,40 @@
+dsk@dsk:~/Desktop/Rust/memleak4$ valgrind --leak-check=full ./memleak4
+==7086== Memcheck, a memory error detector
+==7086== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7086== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==7086== Command: ./memleak4
+==7086== 
+==7086== 
+==7086== HEAP SUMMARY:
+==7086==     in use at exit: 16 bytes in 1 blocks
+==7086==   total heap usage: 11 allocs, 10 frees, 1,677 bytes allocated
+==7086== 
+==7086== 16 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==7086==    at 0x483021B: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7086==    by 0x1147D9: alloc (alloc.rs:11)
+==7086==    by 0x1147D9: __rdl_alloc (alloc.rs:233)
+==7086==    by 0x10BB51: alloc::alloc::alloc (in /home/dsk/Desktop/Rust/memleak4/memleak4)
+==7086==    by 0x10BA9D: alloc::alloc::exchange_malloc (in /home/dsk/Desktop/Rust/memleak4/memleak4)
+==7086==    by 0x10BD55: <alloc::rc::Rc<T>>::new (in /home/dsk/Desktop/Rust/memleak4/memleak4)
+==7086==    by 0x10A5C4: memleak4::main (in /home/dsk/Desktop/Rust/memleak4/memleak4)
+==7086==    by 0x10BCFB: std::rt::lang_start::{{closure}} (in /home/dsk/Desktop/Rust/memleak4/memleak4)
+==7086==    by 0x113345: {{closure}} (rt.rs:49)
+==7086==    by 0x113345: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:135)
+==7086==    by 0x114F0E: {{closure}} (rt.rs:49)
+==7086==    by 0x114F0E: std::panicking::try::do_call (panicking.rs:297)
+==7086==    by 0x116E67: __rust_maybe_catch_panic (lib.rs:87)
+==7086==    by 0x115995: try<i32,closure> (panicking.rs:276)
+==7086==    by 0x115995: catch_unwind<closure,i32> (panic.rs:388)
+==7086==    by 0x115995: std::rt::lang_start_internal (rt.rs:48)
+==7086==    by 0x10BCC1: std::rt::lang_start (in /home/dsk/Desktop/Rust/memleak4/memleak4)
+==7086== 
+==7086== LEAK SUMMARY:
+==7086==    definitely lost: 16 bytes in 1 blocks
+==7086==    indirectly lost: 0 bytes in 0 blocks
+==7086==      possibly lost: 0 bytes in 0 blocks
+==7086==    still reachable: 0 bytes in 0 blocks
+==7086==         suppressed: 0 bytes in 0 blocks
+==7086== 
+==7086== For counts of detected and suppressed errors, rerun with: -v
+==7086== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+dsk@dsk:~/Desktop/Rust/memleak4$ 
