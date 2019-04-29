@@ -46,6 +46,23 @@ Informacje które tu widzimy to:
   \item Pierwsza linia ("Invalid write \ldots ") wskazuje na rodzaj problemu. W tym przypadku nieudana próba zapisu do pamięci.
   \item Poniżej znajduje się ślad stosu i nazwy funkcji mówiące o tym, gdzie wystąpił problem. Czytanie tej sekcji może być trudne w przypadku dużych programów, ułatwieniem może być czytanie od dołu.
 \end{itemize}
+Valgrind dzieli wycieki pamięci na kilka kategorii:
+\begin{lstlisting}
+==6051== LEAK SUMMARY:
+==6051==    definitely lost: 16 bytes in 1 blocks
+==6051==    indirectly lost: 0 bytes in 0 blocks
+==6051==    possibly lost: 0 bytes in 0 blocks
+==6051==    still reachable: 0 bytes in 0 blocks
+==6051==    suppressed: 0 bytes in 0 blocks
+\end{lstlisting}
+\begin{itemize}
+  \item definitely lost oznacza, że wyciek jest pewny i należy go naprawić.
+  \item indirecty lost informuje o wycieku w strukturach bazujących na wskaźnikach. Przykład: jeżeli korzeń drzewa binarnego spowoduje \textit{definitely lost}, wszystkie dzieci spowodują \textit{indirectly lost}
+  \item possibly lost zwykle oznacza to samo co \textit{definitely lost}, za wyjątkiem sytuacji, gdy jest on spowodowany umyślnie. Występuje gdy w programie znajdują się wskaźniki nie wskazujące na początek bloku.
+  \item still reachable występuje w momencie, gdy program nie zwolnił pamięci, ale mógłby to zrobić. Zwykle nie jest to znaczący problem.
+  \item suppressed wskazuje na błędy, które zostały wyciszone. Powinno się je ignorować.
+\end{itemize}
+Korzystając z programy Valgrind można zatem wyśledzić lokalizację błędu, określić jego przyczynę i rodzaj. Jest więc bardzo użytecznym narzędziem, które może pomóc w wyeliminowaniu błędów oprogramowania, a także w zwiększeniu wydajności. Dodatkowo Valgrind może działać na większości dostępnych platform i wspiera każdy język programowania. Narzędzie to powinno zatem być używane możliwie jak najczęściej (ograniczenia spowodowane są czasem działania programu), aby tworzone oprogramowania było jak najlepszej jakości. 
 \newpage
 \section{Wycieki pamięci w języku C/C++}
 Konstrukcja tego języka pozwala na wykonanie wycieków pamięci na wiele sposobów. Wybraliśmy te z nich, które w możliwie czytelny sposób pokażą istotę problemu i takie, które są często popełniane. Poniżej przedstawione zostały wycieki związane z alokacją pamięci i zwalnianiem nieużywanego obszaru w przypadku korzystania ze wskaźników.

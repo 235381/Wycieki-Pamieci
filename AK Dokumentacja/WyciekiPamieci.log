@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.27)  28 APR 2019 20:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.29)  29 APR 2019 15:07
 entering extended mode
 **./WyciekiPamieci.tex
 (WyciekiPamieci.tex
@@ -307,15 +307,15 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 <cpp1nlVal.png, id=21, 611.28375pt x 238.8925pt>
 File: cpp1nlVal.png Graphic file (type png)
 <use cpp1nlVal.png>
-Package pdftex.def Info: cpp1nlVal.png  used on input line 66.
+Package pdftex.def Info: cpp1nlVal.png  used on input line 83.
 (pdftex.def)             Requested size: 427.8957pt x 167.2236pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--68
+Underfull \hbox (badness 10000) in paragraph at lines 82--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--68
+Underfull \hbox (badness 10000) in paragraph at lines 82--85
 
  []
 
@@ -323,15 +323,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--68
 <cpp1lVal.png, id=27, 869.2475pt x 409.53pt>
 File: cpp1lVal.png Graphic file (type png)
 <use cpp1lVal.png>
-Package pdftex.def Info: cpp1lVal.png  used on input line 83.
+Package pdftex.def Info: cpp1lVal.png  used on input line 100.
 (pdftex.def)             Requested size: 434.62268pt x 204.7645pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--85
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--85
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
 
@@ -339,20 +339,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--85
 <cpp2lVal.png, id=32, 952.55875pt x 408.52625pt>
 File: cpp2lVal.png Graphic file (type png)
 <use cpp2lVal.png>
-Package pdftex.def Info: cpp2lVal.png  used on input line 102.
+Package pdftex.def Info: cpp2lVal.png  used on input line 119.
 (pdftex.def)             Requested size: 476.27821pt x 204.26262pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
+Underfull \hbox (badness 10000) in paragraph at lines 118--121
 
  []
 
 
-Overfull \hbox (4.24698pt too wide) in paragraph at lines 101--104
+Overfull \hbox (4.24698pt too wide) in paragraph at lines 118--121
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
+Underfull \hbox (badness 10000) in paragraph at lines 118--121
 
  []
 
@@ -360,20 +360,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--104
 <cpp2nlVal.png, id=38, 610.28pt x 239.89626pt>
 File: cpp2nlVal.png Graphic file (type png)
 <use cpp2nlVal.png>
-Package pdftex.def Info: cpp2nlVal.png  used on input line 121.
+Package pdftex.def Info: cpp2nlVal.png  used on input line 138.
 (pdftex.def)             Requested size: 427.19308pt x 167.92622pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--123
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
 
  []
 
 [8 <./cpp2nlVal.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 126--128
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
 
  []
 
 
-Overfull \hbox (22.7465pt too wide) in paragraph at lines 126--128
+Overfull \hbox (22.7465pt too wide) in paragraph at lines 143--145
 \T1/cmr/m/n/12 W j¦-zyku Rust naj-ªa-twiej zo-bra-zo-wa¢ wy-ciek pa-mi¦ci wy-wo
 -ªu-j¡c go spe-cjaln¡ funk-cj¡ \T1/cmr/m/it/12 mem::forget\T1/cmr/m/n/12 .
  []
@@ -381,7 +381,7 @@ Overfull \hbox (22.7465pt too wide) in paragraph at lines 126--128
 [9] (WyciekiPamieci.aux) ) 
 Here is how much of TeX's memory you used:
  4677 strings out of 492945
- 63182 string characters out of 3135513
+ 63292 string characters out of 3135513
  152617 words of memory out of 3000000
  8517 multiletter control sequences out of 15000+200000
  12598 words of font info for 33 fonts, out of 3000000 for 9000
@@ -395,9 +395,9 @@ a\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\ho
 mik\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C
 :\Users\homik\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2
 074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on WyciekiPamieci.pdf (9 pages, 287516 bytes).
+Output written on WyciekiPamieci.pdf (9 pages, 291105 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
+ 302 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
