@@ -46,23 +46,6 @@ Informacje które tu widzimy to:
   \item Pierwsza linia ("Invalid write \ldots ") wskazuje na rodzaj problemu. W tym przypadku nieudana próba zapisu do pamięci.
   \item Poniżej znajduje się ślad stosu i nazwy funkcji mówiące o tym, gdzie wystąpił problem. Czytanie tej sekcji może być trudne w przypadku dużych programów, ułatwieniem może być czytanie od dołu.
 \end{itemize}
-Valgrind dzieli wycieki pamięci na kilka kategorii:
-\begin{lstlisting}
-==6051== LEAK SUMMARY:
-==6051==    definitely lost: 16 bytes in 1 blocks
-==6051==    indirectly lost: 0 bytes in 0 blocks
-==6051==    possibly lost: 0 bytes in 0 blocks
-==6051==    still reachable: 0 bytes in 0 blocks
-==6051==    suppressed: 0 bytes in 0 blocks
-\end{lstlisting}
-\begin{itemize}
-  \item definitely lost oznacza, że wyciek jest pewny i należy go naprawić.
-  \item indirecty lost informuje o wycieku w strukturach bazujących na wskaźnikach. Przykład: jeżeli korzeń drzewa binarnego spowoduje \textit{definitely lost}, wszystkie dzieci spowodują \textit{indirectly lost}
-  \item possibly lost zwykle oznacza to samo co \textit{definitely lost}, za wyjątkiem sytuacji, gdy jest on spowodowany umyślnie. Występuje gdy w programie znajdują się wskaźniki nie wskazujące na początek bloku.
-  \item still reachable występuje w momencie, gdy program nie zwolnił pamięci, ale mógłby to zrobić. Zwykle nie jest to znaczący problem.
-  \item suppressed wskazuje na błędy, które zostały wyciszone. Powinno się je ignorować.
-\end{itemize}
-Korzystając z programy Valgrind można zatem wyśledzić lokalizację błędu, określić jego przyczynę i rodzaj. Jest więc bardzo użytecznym narzędziem, które może pomóc w wyeliminowaniu błędów oprogramowania, a także w zwiększeniu wydajności. Dodatkowo Valgrind może działać na większości dostępnych platform i wspiera każdy język programowania. Narzędzie to powinno zatem być używane możliwie jak najczęściej (ograniczenia spowodowane są czasem działania programu), aby tworzone oprogramowania było jak najlepszej jakości. 
 \newpage
 \section{Wycieki pamięci w języku C/C++}
 Konstrukcja tego języka pozwala na wykonanie wycieków pamięci na wiele sposobów. Wybraliśmy te z nich, które w możliwie czytelny sposób pokażą istotę problemu i takie, które są często popełniane. Poniżej przedstawione zostały wycieki związane z alokacją pamięci i zwalnianiem nieużywanego obszaru w przypadku korzystania ze wskaźników.
@@ -141,5 +124,177 @@ Powyższe przykłady obrazują, że w języku C oraz C++ do wycieku pamięci mo�
 \noindent
 \section{Wycieki pamięci w języku Rust}
 Rust różni się od innych języków programowania sposobem zarządzania pamięcią. Sprawdzanie poprawności kodu pod kątem błędnego użycia pamięci odbywa się już na etapie kompilacji, a nie po uruchomieniu aplikacji. Rust nie posiada Garbage Collectora, ale wprowadza mechanizm zwany \textbf{Ownership}. Własność ta tak jak w przypadku C++ zmusza programistę do ręcznego zarządzania pamięcią, jednak istotną różnicą jest to, że program napisany w Rust nie skompiluje się, jeżeli wykryty zostanie błąd. Dodatkowo Ownership ułatwia zarządzanie pamięcią, pozwalając na tylko jednego właściciela obiektu, a także poprzez automatyczne zwalnianie zasobów. Oznacza to, że deklarując zmienną, przypisywany jest do niej Ownership, czyli zmienna staje się właścicielem pewnego fragmentu pamięci. Pamięć ta zostanie automatycznie zwolniona w momencie wyjścia poza zakres użycia zmiennej (np. po wyjściu z funkcji). Rust wydaje się zatem być językiem znacznie bardziej bezpiecznym niż C++. Czy to oznacza, że wyciek pamięci jest niemożliwy? Tylko w teorii. Dokumentacja Rust mówi o tym, że język stara się kontrolować wycieki, ale nie jest to całkowicie możliwe, poprzez nieprzewidywalną naturę tego zjawiska. \\\\
-W języku Rust najłatwiej zobrazować wyciek pamięci wywołując go specjalną funkcją \textit{mem::forget}. Powoduje ona, że Rust usunie zmienną, ale nie uruchomi jej destruktora.
+W języku Rust najłatwiej zobrazować wyciek pamięci wywołując go specjalną funkcją \textit{mem::forget}. Powoduje ona, że Rust usunie zmienną, ale nie uruchomi jej destruktora. 
+\begin{lstlisting}
+use std::mem;
+fn main() {
+    let xs = vec![0, 1, 2, 3];
+    mem::forget(xs);
+}
+\end{lstlisting}
+\newpage
+\noindent
+Raport Valgrind w przypadku Rust jest znacznie trudniejszy do odczytania niż raport z języka C++. Zawiera dużo więcej informacji, ale są one mniej czytelne dla użytkownika.
+\begin{lstlisting}
+==6051== HEAP SUMMARY:
+==6051==     in use at exit: 16 bytes in 1 blocks
+==6051==   total heap usage: 11 allocs, 10 frees, 1,677 bytes allocated
+==6051== 16 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==6051==    at 0x483021B: malloc (in /usr/lib/valgrind/vgpreload_memcheck
+		-x86-linux.so)
+==6051==    by 0x1118D9: alloc (alloc.rs:11)
+==6051==    by 0x1118D9: __rdl_alloc (alloc.rs:233)
+==6051==    by 0x10A0A1: alloc::alloc::alloc (in /home/dsk/Desktop/Rust/
+		memleak3/memleak3)
+==6051==    by 0x109FED: alloc::alloc::exchange_malloc (in /home/dsk/
+		Desktop/Rust/memleak3/memleak3)
+==6051==    by 0x10AA49: memleak3::main (in /home/dsk/Desktop/Rust/
+		memleak3/memleak3)
+==6051==    by 0x10A80B: std::rt::lang_start::{{closure}} (in /home/dsk/
+		Desktop/Rust/memleak3/memleak3)
+==6051==    by 0x110445: {{closure}} (rt.rs:49)
+==6051==    by 0x110445: std::sys_common::backtrace::__rust_begin_short_
+		backtrace (backtrace.rs:135)
+==6051==    by 0x11200E: {{closure}} (rt.rs:49)
+==6051==    by 0x11200E: std::panicking::try::do_call (panicking.rs:297)
+==6051==    by 0x113F67: __rust_maybe_catch_panic (lib.rs:87)
+==6051==    by 0x112A95: try<i32,closure> (panicking.rs:276)
+==6051==    by 0x112A95: catch_unwind<closure,i32> (panic.rs:388)
+==6051==    by 0x112A95: std::rt::lang_start_internal (rt.rs:48)
+==6051==    by 0x10A7D1: std::rt::lang_start (in /home/dsk/Desktop/Rust/
+		memleak3/memleak3)
+==6051==    by 0x10AAF0: main (in /home/dsk/Desktop/Rust/memleak3/memleak3)
+==6051== 
+==6051== LEAK SUMMARY:
+==6051==    definitely lost: 16 bytes in 1 blocks
+==6051==    indirectly lost: 0 bytes in 0 blocks
+==6051==      possibly lost: 0 bytes in 0 blocks
+==6051==    still reachable: 0 bytes in 0 blocks
+==6051==         suppressed: 0 bytes in 0 blocks
+\end{lstlisting}
+Analizując podsumowanie można zauważyć wyciek 16 bajtów pamięci (odpowiadające 4 liczbom całkowitym z wektora). Odczytanie przyczyny wycieku nie jest jednak proste. Analizując wynik można wywnioskować, że wyciek związany jest z alokacją pamięci w funkcji main() programu. Gdyby jednak pominąć funkcję \textit{mem::forget} wyciek nie miałby miejsca. \\\\Ze względu na ilość podawanych informacji, w dalszej części dokumentu będziemy używać skróconych wersji raportów.\\
+Kolejny przykład wycieku również bazuje na użyciu funkcji \textit{mem::forget}, ale tym razem w innym kontekście. W poniższym programie wykorzystana została funkcja \textit{drain()}, która usuwa elementy z wektora i przesuwa pozostałe, tak aby wektor był ciągły. Po usunięciu dwóch pierwszych elementów z wektora, dwa pozostałe powinny trafić na ich miejsce. Używając \textit{mem::forget}, można jednak zapobiec przesuwaniu. Próba odczytania pamięci z początku wektora zakończy się niepowodzeniem i nastąpi wyciek.
+\begin{lstlisting}
+use std::io::stdin;
+
+fn main() {
+    let mut vec = vec![Box::new(0); 4];
+
+    {
+        // start draining, vec can no longer be accessed
+        let mut drainer = vec.drain(..);
+
+        // pull out two elements and immediately drop them
+        drainer.next();
+        drainer.next();
+
+        // get rid of drainer, but don't call its destructor
+        std::mem::forget(drainer);
+    }
+
+    // Oops, vec[0] was dropped, we're reading a pointer into free'd
+    // memory!
+    println!("{}", vec[0]);
+}
+
+==4133== HEAP SUMMARY:
+==4133==     in use at exit: 8 bytes in 2 blocks
+==4133==   total heap usage: 22 allocs, 20 frees, 1,886 bytes 
+		allocated
+==4133==
+==4133== LEAK SUMMARY:
+==4133==    definitely lost: 8 bytes in 2 blocks
+==4133==    indirectly lost: 0 bytes in 0 blocks
+==4133==      possibly lost: 0 bytes in 0 blocks
+==4133==    still reachable: 0 bytes in 0 blocks
+==4133==         suppressed: 0 bytes in 0 blocks
+\end{lstlisting}
+\newpage
+\noindent
+Na raporcie Valgrind widać wyciek 8 bajtów pamięci. Powyższe wycieki są jednak stworzone w kontrolowanych warunkach - są wymuszone przez programistę. W języku Rust można jednak wykonać wyciek bez informowania o tym kompilatora. Wyciek związany z cyklami referencji nie zostanie poprawnie wykryty, a program się skompiluje. Kod poniżej tworzy dwie listy, a następnie modyfikuje je w ten sposób, aby ostatni element w każdej liście posiadał referencję to innej listy. W ten sposób powstaje pętla.
+\begin{lstlisting}
+use std::rc::Rc;
+use std::cell::RefCell;
+use crate::List::{Cons, Nil};
+
+#[derive(Debug)]
+enum List {
+    Cons(i32, RefCell<Rc<List>>),
+    Nil,
+}
+
+impl List {
+    fn tail(&self) -> Option<&RefCell<Rc<List>>> {
+        match self {
+            Cons(_, item) => Some(item),
+            Nil => None,
+        }
+    }
+}
+
+fn main() {
+    let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
+	let b = Rc::new(Cons(10, RefCell::new(Rc::clone(&a))));
+	
+	if let Some(link) = a.tail() {
+        *link.borrow_mut() = Rc::clone(&b);
+    }
+}
+\end{lstlisting}
+\newpage
+\noindent
+Tym razem Valgrind informuje użytkownika o problemie z referencjami. Nie udaje się poprawnie usunąć wszystkich powiązań, gdyż w nieskończoność się one zapętlają. Skutkiem jest wyciek pamięci. 
+\begin{lstlisting}
+a initial rc count = 1
+a next item = Some(RefCell { value: Nil })
+a rc count after b creation = 2
+b initial rc count = 1
+b next item = Some(RefCell { value: Cons(5, RefCell { value: Nil }) })
+b rc count after changing a = 2
+a rc count after changing a = 2
+==5706== 
+==5706== HEAP SUMMARY:
+==5706==     in use at exit: 40 bytes in 2 blocks
+==5706==   total heap usage: 21 allocs, 19 frees, 2,853 bytes allocated
+==5706== 
+==5706== LEAK SUMMARY:
+==5706==    definitely lost: 20 bytes in 1 blocks
+==5706==    indirectly lost: 20 bytes in 1 blocks
+==5706==      possibly lost: 0 bytes in 0 blocks
+==5706==    still reachable: 0 bytes in 0 blocks
+==5706==         suppressed: 0 bytes in 0 blocks
+\end{lstlisting}
+Podobnym przykładem jest program zawierający strukturę, która posiada referencje do samej siebie.
+\begin{lstlisting}
+use std::cell::RefCell;
+use std::rc::Rc;
+
+struct Cycle {
+    cell: RefCell<Option<Rc<Cycle>>>,
+}
+
+impl Drop for Cycle {
+    fn drop(&mut self) {
+        println!("freed");
+    }
+}
+
+fn main() {
+    let cycle = Rc::new(Cycle { cell: RefCell::new(None)});
+    *cycle.cell.borrow_mut() = Some(cycle.clone());
+}
+
+
+==7086== HEAP SUMMARY:
+==7086==     in use at exit: 16 bytes in 1 blocks
+==7086==   total heap usage: 11 allocs, 10 frees, 1,677 bytes allocated
+==7086== 
+==7086== LEAK SUMMARY:
+==7086==    definitely lost: 16 bytes in 1 blocks
+==7086==    indirectly lost: 0 bytes in 0 blocks
+==7086==      possibly lost: 0 bytes in 0 blocks
+==7086==    still reachable: 0 bytes in 0 blocks
+==7086==         suppressed: 0 bytes in 0 blocks
+\end{lstlisting}
+W tym przypadku jednak Valgrind nie wskazuje problemu w tak wyraźny sposób. Wyciek jest jednak definitywny.
 \end{document}
