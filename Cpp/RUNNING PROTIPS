@@ -1,2 +1,6 @@
 g++ main.cpp -o main
 valgrind --leak-check=full --show-leak-kinds=all ./main
+
+
+g++-8 -fsanitize=address main.cpp
+ASAN_OPTIONS=detect_leaks=1

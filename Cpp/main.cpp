@@ -1,36 +1,20 @@
 #include <iostream>
 
-class problematicClass{
-private:
-    int age;
-    float *grades;
-public:
-    problematicClass();
-    ~problematicClass();
-};
-
-problematicClass::problematicClass(){
-    grades = new float[1000];
-}
-
-problematicClass::~problematicClass() {
-    delete[] grades;
-}
 
 int main(){
-    problematicClass *c1 = new problematicClass();
-//    delete c1;
+    int *x  = new int[1000];
+    {
+        int y;
+        int *z = new int[1000];
+        delete[] z;
 
-//    std::cout<< 1 << std::endl;
+    }
 
-//    int b = 1;
-//    int k = 2;
-//    int result = b + k;
+    delete [] x;
+
 
     return 0;
 }
-
-
 
 
 
